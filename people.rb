@@ -1,3 +1,7 @@
+def test_people
+	puts "Person.rb has loaded!"
+end
+
 class Person
 	attr_accessor :name, :gender, :religion, :origin_city
 
@@ -5,15 +9,12 @@ class Person
 	@@religion = ['Christian', 'Muslim'] # Two options for now. More to come.
  	@@origin_city = ['Venice', 'Baghdad']
 
- 	def test
- 		puts "Person.rb loaded!"
- 	end
-
  	def self.biography
  		if gender == 'Male'
  		puts "#{name} is a merchant from #{origin_city}. He is a member of the #{religion} faith.\n"
  		else
  		puts "#{name} is a merchant from #{origin_city}. She is a member of the #{religion} faith.\n"
+ 		end
  	end
 end
 
