@@ -1,7 +1,3 @@
-def test_people
-	puts "Person.rb has loaded!"
-end
-
 class Person
 	attr_accessor :name, :gender, :religion, :origin_city
 
@@ -33,6 +29,10 @@ class Player < Person
 	player = self.new(name, gender, religion, origin_city)
 	end
 
+end
+
+def test_people
+	puts "Person.rb has loaded!"
 end
 
 def questionnaire
