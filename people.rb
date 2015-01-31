@@ -9,6 +9,14 @@ class Person
 	@@religion = ['Christian', 'Muslim'] # Two options for now. More to come.
  	@@origin_city = ['Venice', 'Baghdad']
 
+	def initialize(name, gender, religion, origin_city)
+		@name = name
+		@gender = gender
+		@religion = religion
+		@origin_city = origin_city
+		puts "A new person has been instatiated."
+	end
+
  	def self.biography
  		if gender == 'Male'
  		puts "#{name} is a merchant from #{origin_city}. He is a member of the #{religion} faith.\n"
