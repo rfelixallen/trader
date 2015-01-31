@@ -6,6 +6,9 @@ puts "Hello world!"
 test_globe
 test_people
 
+questionnaire
+
+=begin
 puts "Lets make you a character. First, what is your name?\n"
 name1 = gets.chomp
 puts name1
@@ -24,3 +27,4 @@ puts origin_city1
 puts religion1
 player1 = Player.create_player(name1, gender1, religion1, origin_city1)
 player1.biography
+=end

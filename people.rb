@@ -33,34 +33,42 @@ class Player < Person
 	player = self.new(name, gender, religion, origin_city)
 	end
 
-	def questionnaire
+end
+
+def questionnaire
 		puts "Lets make you a character. First, what is your name?\n"
 		name1 = gets.chomp.to_s
 		puts name1
 		puts "Next, what is your gender? Type Male or Female.\n"
 		while gender1 = gets.chomp # loop while getting user input
 		  case gender1
-		  when "Male" #|| "Female"
+		  when "Male"
 		    puts gender1
 		    break # make sure to break so you don't ask again
+		  when "Female"
+		  	puts gender1
+		  	break
 		  else
 		    puts "Please type exactly Male or Female. \n"
 		  end
-		end
+		end	
 		puts "Now set your starting city. This will also choose your faith. \n"
 		puts "Your choises are Venice or Baghdad. \n"
-		origin_city1 = gets.chomp
-		if origin_city1 == 'Venice'
-			religion1 = 'Christian'
-		else
-			religion1 = 'Muslim'
-		end
-		puts origin_city1
-		puts religion1
+		while origin_city1 = gets.chomp # loop while getting user input
+		  case origin_city1
+		  when "Venice"
+		    religion1 = "Christian"
+		    puts origin_city1
+		    puts religion1
+		    break # make sure to break so you don't ask again
+		  when "Baghdad"
+		  	puts origin_city1
+		    puts religion1
+		  	break
+		  else
+		    puts "Please type exactly Venice or Baghdad. \n"
+		  end
+		end	
 		player1 = Player.create_player(name1, gender1, religion1, origin_city1)
 		player1.biography
-
-	end
-
 end
-
