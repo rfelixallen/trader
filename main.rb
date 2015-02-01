@@ -1,11 +1,13 @@
 require_relative 'globe'
 require_relative 'people'
+require_relative 'cities'
 #require_relative 'test'
 
 puts "Hello world!\n"
 
 test_globe # Tests if globe.rb has loaded.
 test_people # Tests if people.rb has loaded.
+test_city
 
 # Initialize the world
 globe1 = Globe.new

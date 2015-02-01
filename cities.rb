@@ -1,5 +1,9 @@
 require_relative 'globe'
 
+def test_city
+	puts "cities.rb has loaded!"
+end
+
 class City
 	attr_accessor :name, :region_location
 
