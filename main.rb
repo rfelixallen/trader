@@ -1,5 +1,6 @@
 require_relative 'globe'
 require_relative 'people'
+#require_relative 'test'
 
 puts "Hello world!\n"
 
@@ -51,3 +52,10 @@ player1.biography
 puts "Now that you have entered the stage, lets discuss the world.\n"
 puts "The name of the globe is #{terra1}.\n"
 puts "The regions of the known world are " + regions1*", " + "."
+
+#populate cities into regions.
+cities1 = ["Rome", "Venice"]
+cities2 = ["Baghdad", "Mecca"]
+c = Hash.new
+c[regions1[0]] = cities1
+c[regions1[1]] = cities2
