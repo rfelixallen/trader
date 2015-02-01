@@ -11,4 +11,11 @@ class City
 		@name = name
 		@region_location = region_location
 	end
+
+	def report
+		name = self.name
+		origin = region_location
+		puts "The name of the city is #{name}, located in #{origin}."
+		puts 
+	end
 end

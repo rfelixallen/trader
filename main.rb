@@ -65,3 +65,6 @@ puts "The cities of #{regions1[0]} are:\n"
 puts c[regions1[0]]
 puts "The cities of #{regions1[1]} are:\n"  
 puts c[regions1[1]]
+
+rome = City.new(cities1[0], regions1[0])
+puts rome.report
