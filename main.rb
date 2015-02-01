@@ -59,3 +59,7 @@ cities2 = ["Baghdad", "Mecca"]
 c = Hash.new
 c[regions1[0]] = cities1
 c[regions1[1]] = cities2
+puts "The cities of #{regions1[0]} are:\n" 
+puts c[regions1[0]]
+puts "The cities of #{regions1[1]} are:\n"  
+puts c[regions1[1]]
