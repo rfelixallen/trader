@@ -6,6 +6,11 @@ puts "Hello world!\n"
 test_globe # Tests if globe.rb has loaded.
 test_people # Tests if people.rb has loaded.
 
+# Initialize the world
+globe1 = Globe.new
+terra1 = globe1.terra
+regions1 = globe1.regions
+
 #questionnaire # Creates the player in people.rb
 puts "Lets make you a character. First, what is your name?\n"
 name1 = gets.chomp.to_s
@@ -42,3 +47,7 @@ while origin_city1 = gets.chomp # loop while getting user input
 end	
 player1 = Player.create_player(name1, gender1, religion1, origin_city1)
 player1.biography
+
+puts "Now that you have entered the stage, lets discuss the world.\n"
+puts "The name of the globe is #{terra1}.\n"
+puts "The regions of the known world are " + regions1*", " + "."

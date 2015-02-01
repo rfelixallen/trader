@@ -2,21 +2,17 @@ def test_globe
 	puts 'globe.rb has loaded!'
 end
 
-Class Globe
-	attr_accessor :terra, :regions, :cities
+class Globe
+	attr_accessor :terra, :regions
 	@@terra = ['Earth']
 	@@regions = ['Europe', 'Middle East']
-	@@cities = ['Venice', 'Baghdad']
 
-	def initialize
+	def initialize(terra="Earth", regions=["Europe", "The Middle East"])
 		@terra = terra
 		@regions = regions
-		@cities = cities
+		puts "A new world has been instatiated."
 	end
 end
 
-Class Region
-end
-
-Class City
+class Region < Globe
 end
