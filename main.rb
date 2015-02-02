@@ -35,7 +35,7 @@ while origin_city1 = gets.chomp # loop while getting user input
     puts "Please type exactly Venice or Baghdad. \n"
   end
 end	
-player1 = Player.create_player(name1, origin_city1)
+player1 = Player.create_player(name1, origin_city1, 100)
 player1.biography
 
 puts "Now that you have entered the stage, lets discuss the world.\n"

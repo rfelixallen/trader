@@ -1,24 +1,26 @@
 class Person
-	attr_accessor :name, :origin_city
+	attr_accessor :name, :origin_city, :money
 
  	@@origin_city = ['Venice', 'Baghdad']
 
-	def initialize(name, origin_city)
+	def initialize(name, origin_city, money)
 		@name = name
 		@origin_city = origin_city
+		@money = money
 		puts "A new person has been instatiated."
 	end
 
  	def biography
- 		puts "#{name} is a merchant from #{origin_city}.\n"
+ 		puts "#{name} is a merchant from #{origin_city}. They have #{money} ducats.\n"
  	end
 end
 
 class Player < Person
 	
-	def self.create_player(name, origin_city)		
-	player = self.new(name, origin_city)
+	def self.create_player(name, origin_city, money)		
+	player = self.new(name, origin_city, money)
 	end
+
 
 end
 
