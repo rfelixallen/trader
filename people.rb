@@ -1,32 +1,23 @@
 class Person
-	attr_accessor :name, :gender, :religion, :origin_city
+	attr_accessor :name, :origin_city
 
-	@@geneder = ['Male', 'Female'] # keeping it simple. Would like to introduce other genders too.
-	@@religion = ['Christian', 'Muslim'] # Two options for now. More to come.
  	@@origin_city = ['Venice', 'Baghdad']
 
-	def initialize(name, gender, religion, origin_city)
+	def initialize(name, origin_city)
 		@name = name
-		@gender = gender
-		@religion = religion
 		@origin_city = origin_city
 		puts "A new person has been instatiated."
 	end
 
  	def biography
- 		x = "#{gender}"		
- 		if x == 'Male'
- 		puts "#{name} is a merchant from #{origin_city}. He is a member of the #{religion} faith.\n"
- 		else
- 		puts "#{name} is a merchant from #{origin_city}. She is a member of the #{religion} faith.\n"
- 		end	
+ 		puts "#{name} is a merchant from #{origin_city}.\n"
  	end
 end
 
 class Player < Person
 	
-	def self.create_player(name, gender, religion, origin_city)		
-	player = self.new(name, gender, religion, origin_city)
+	def self.create_player(name, origin_city)		
+	player = self.new(name, origin_city)
 	end
 
 end
@@ -35,6 +26,7 @@ def test_people
 	puts "Person.rb has loaded!"
 end
 
+=begin
 def questionnaire
 		puts "Lets make you a character. First, what is your name?\n"
 		name1 = gets.chomp.to_s
@@ -72,3 +64,4 @@ def questionnaire
 		player1 = Player.create_player(name1, gender1, religion1, origin_city1)
 		player1.biography
 end
+=end
