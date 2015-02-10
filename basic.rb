@@ -53,28 +53,39 @@ while command = gets.chomp
 		list_goods(item_a, item_b)
 		puts "Type which good you want to buy: Item A (A) or Item B (B)\n"
 		buy = gets.chomp
-		puts "How many do you want to buy?\n"
 		if buy == "A"
 			puts "How many units?\n"
 			units = Integer(gets) rescue nil
 			cost = units*item_a
-			money = money - cost
-			item_a_count = item_a_count + units
-			puts "You bought #{units} of Item A for $#{cost}.\n"
+			if cost > money
+				puts "You do not have enough money.\n"
+			elsif cost < 0
+				puts "I dont think you get how money works.\n"
+			else
+				money = money - cost
+				item_a_count = item_a_count + units
+				puts "You bought #{units} of Item A for $#{cost}.\n"
+			end
 			puts "Hit Enter to continue.\n"
 		elsif buy == "B"
 			puts "How many units?\n"
 			units = Integer(gets) rescue nil
 			cost = units*item_b
-			money = money - cost
-			item_b_count = item_b_count + units
-			puts "You bought #{units} of Item B for $#{cost}.\n"
+			if cost > money
+				puts "You do not have enough money.\n"
+			elsif cost < 0
+				puts "I dont think you get how money works.\n"
+			else
+				money = money - cost
+				item_a_count = item_b_count + units
+				puts "You bought #{units} of Item B for $#{cost}.\n"
+			end
 			puts "Hit Enter to continue.\n"
 		elsif buy == "X"
 			puts "Cancel trade.\n"
 			break
 		else
-			instructions
+			puts "Type (A), (B) or (X) to cancel.\n"
 		end
 	when "S"
 		puts "You want to Sell.\n"
@@ -86,20 +97,32 @@ while command = gets.chomp
 			puts "How many units?\n"
 			units = Integer(gets) rescue nil
 			cost = units*item_a
-			money = money + cost
-			item_a_count = item_a_count - units
-			puts "You sold #{units} of Item A for $#{cost}.\n"
+			if units > item_a_count
+				puts "You do not have that many to sell.\n"
+			elsif item_a_count < 0
+				puts "Enter a number above 0.\n"
+			else
+				money = money + cost
+				item_a_count = item_a_count - units
+				puts "You sold #{units} of Item A for $#{cost}.\n"
+			end
 			puts "Hit Enter to continue.\n"
 		elsif sell == "B"
 			puts "How many units?\n"
 			units = Integer(gets) rescue nil
 			cost = units*item_b
-			money = money + cost
-			item_b_count = item_b_count - units
-			puts "You sold #{units} of Item B for $#{cost}.\n"
+			if units > item_b_count
+				puts "You do not have that many to sell.\n"
+			elsif item_b_count < 0
+				puts "Enter a number above 0.\n"
+			else
+				money = money + cost
+				item_b_count = item_b_count - units
+				puts "You sold #{units} of Item B for $#{cost}.\n"
+			end
 			puts "Hit Enter to continue.\n"
 		elsif sell == "X"
-			puts "Cancel trade.\n"
+			puts "Type (A), (B) or (X) to cancel.\n"
 			break
 		else
 			instructions
