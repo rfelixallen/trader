@@ -19,16 +19,6 @@ def list_goods(item_a, item_b)
 	puts "Item B costs $#{item_b}.\n"
 end
 
-def for_sale
-	if location == 1
-		item_a = item_a*5
-		item_b = item_b*2
-	else
-		item_a = item_a*2
-		item_b = item_b*5
-	end
-end
-
 money = 100
 location = 0
 item_a = 10
@@ -39,11 +29,14 @@ item_b_count = 0
 puts "Hit Enter to Start.\n"
 while command = gets.chomp
 	puts "Start of loop.\n"
-	#instructions
 	if location == 0
 		puts "You are in Location A.\n"
+		item_a = 10 * 5
+		item_b = 10 * 2
 	else
 		puts "You are in Location B.\n"
+		item_a = 10 * 2
+		item_b = 10 * 5
 	end
 	case command
 	when "I"
@@ -134,7 +127,8 @@ while command = gets.chomp
 		else
 			location = 0
 		end
-		puts "You are traveling."
+		puts "You are traveling.\n"
+		Puts "Hit Enter to continue.\n"
 	when "Q"
 		puts "Goodbye!\n"
 		break
