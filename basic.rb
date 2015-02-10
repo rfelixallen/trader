@@ -4,6 +4,7 @@ puts "Hello!\n"
 
 def instructions
 	puts "Type the following commands.\n"
+	puts "I == See Inventory\n"
 	puts "B == Buy Goods\n"
 	puts "S == Sell Goods\n"
 	puts "T == Travel to other market\n"
@@ -42,9 +43,10 @@ item_b_count = 0
 puts "Variables declared\n"
 
 puts "Beginning loop.\n"
-instructions
-inventory(money, item_a_count, item_b_count)
+puts "Type (I)nventory, (B)uy, (S)ell, (T)ravel or (Q)uit.\n"
 while command = gets.chomp
+	puts "Start of loop.\n"
+	instructions
 	inventory(money, item_a_count, item_b_count)
 	if location == 0
 		puts "You are in Location A.\n"
@@ -52,6 +54,8 @@ while command = gets.chomp
 		puts "You are in Location B.\n"
 	end
 	case command
+	when "I"
+		inventory(money, item_a_count, item_b_count)
 	when "B"
 		puts "You want to Buy.\n"
 		list_goods(item_a, item_b)
@@ -65,7 +69,6 @@ while command = gets.chomp
 			money = money - cost
 			item_a_count = item_a_count + units
 			puts "You bought #{units} of Item A for #{cost}."
-			inventory
 		elsif buy == "B"
 			puts "How many units?\n"
 			units = gets.chomp.to_f
@@ -73,7 +76,6 @@ while command = gets.chomp
 			money = money - cost
 			item_b_count = item_b_count + units
 			puts "You bought #{units} of Item B for #{cost}."
-			inventory
 		elsif buy == "X"
 			puts "Cancel trade.\n"
 			break
@@ -82,7 +84,7 @@ while command = gets.chomp
 		end
 	when "S"
 		puts "You want to Sell.\n"
-		list_goods
+		list_goods(item_a, item_b)
 		puts "Type which good you want to sell: Item A (A) or Item B (B)\n"
 		buy = gets.chomp
 		puts "How many do you want to sell?\n"
