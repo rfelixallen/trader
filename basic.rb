@@ -21,19 +21,19 @@ end
 
 def for_sale
 	if location == 1
-		item_a = item_a*1.5
-		item_b = item_b*0.5
+		item_a = item_a*5
+		item_b = item_b*2
 	else
-		item_a = item_a*0.5
-		item_b = item_b*1.5
+		item_a = item_a*2
+		item_b = item_b*5
 	end
 end
 
-money = 100.0
+money = 100
 location = 0
-item_a = 10.0
+item_a = 10
 item_a_count = 0
-item_b = 10.0
+item_b = 10
 item_b_count = 0
 
 puts "Hit Enter to Start.\n"
@@ -56,7 +56,7 @@ while command = gets.chomp
 		puts "How many do you want to buy?\n"
 		if buy == "A"
 			puts "How many units?\n"
-			units = gets.chomp.to_f
+			units = Integer(gets) rescue nil
 			cost = units*item_a
 			money = money - cost
 			item_a_count = item_a_count + units
@@ -64,7 +64,7 @@ while command = gets.chomp
 			puts "Hit Enter to continue.\n"
 		elsif buy == "B"
 			puts "How many units?\n"
-			units = gets.chomp.to_f
+			units = Integer(gets) rescue nil
 			cost = units*item_b
 			money = money - cost
 			item_b_count = item_b_count + units
@@ -84,7 +84,7 @@ while command = gets.chomp
 		puts "How many do you want to sell?\n"
 		if sell == "A"
 			puts "How many units?\n"
-			units = gets.chomp.to_f
+			units = Integer(gets) rescue nil
 			cost = units*item_a
 			money = money + cost
 			item_a_count = item_a_count - units
@@ -92,7 +92,7 @@ while command = gets.chomp
 			puts "Hit Enter to continue.\n"
 		elsif sell == "B"
 			puts "How many units?\n"
-			units = gets.chomp.to_f
+			units = Integer(gets) rescue nil
 			cost = units*item_b
 			money = money + cost
 			item_b_count = item_b_count - units
