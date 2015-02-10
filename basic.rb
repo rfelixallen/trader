@@ -1,12 +1,6 @@
 # This is to test a basic trading mechanicsm.
 
-money = 100.0
-location = 0
-
-item_a = 10.0
-item_a_count = 0
-item_b = 10.0
-item_b_count = 0
+puts "Hello!\n"
 
 def instructions
 	puts "Type the following commands.\n"
@@ -16,14 +10,14 @@ def instructions
 	puts "Q == Quit game\n"
 end
 
-def inventory
+def inventory(money, item_a_count, item_b_count)
 	puts "Your Inventory\n"
-	puts "Money: $#{money}\n."
+	puts "Money: $#{money}.\n"
 	puts "Item A: #{item_a_count}\n"
 	puts "Item B: #{item_b_count}\n"
 end
 
-def list_goods
+def list_goods(item_a, item_b)
 	puts "Item A costs $#{item_a}.\n"
 	puts "Item B costs $#{item_b}.\n"
 end
@@ -37,25 +31,36 @@ def for_sale
 		item_b = item_b*1.5
 	end
 end
+puts "Methods defined.\n"
 
+money = 100.0
+location = 0
+item_a = 10.0
+item_a_count = 0
+item_b = 10.0
+item_b_count = 0
+puts "Variables declared\n"
+
+puts "Beginning loop.\n"
+instructions
+inventory(money, item_a_count, item_b_count)
 while command = gets.chomp
-	inventory
+	inventory(money, item_a_count, item_b_count)
 	if location == 0
 		puts "You are in Location A.\n"
 	else
 		puts "You are in Location B.\n"
 	end
-	instructions
 	case command
 	when "B"
 		puts "You want to Buy.\n"
-		list_goods
+		list_goods(item_a, item_b)
 		puts "Type which good you want to buy: Item A (A) or Item B (B)\n"
 		buy = gets.chomp
 		puts "How many do you want to buy?\n"
 		if buy == "A"
 			puts "How many units?\n"
-			units = gets.chomp
+			units = gets.chomp.to_f
 			cost = units*item_a
 			money = money - cost
 			item_a_count = item_a_count + units
@@ -63,7 +68,7 @@ while command = gets.chomp
 			inventory
 		elsif buy == "B"
 			puts "How many units?\n"
-			units = gets.chomp
+			units = gets.chomp.to_f
 			cost = units*item_b
 			money = money - cost
 			item_b_count = item_b_count + units
@@ -114,3 +119,4 @@ while command = gets.chomp
 	else
 		puts "Enter B, S, T or Q.\n"
 	end
+end
