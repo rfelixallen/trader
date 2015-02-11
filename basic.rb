@@ -1,12 +1,15 @@
 # This is to test a basic trading mechanicsm.
+
+# Header text confirms that the game has loaded.
 puts "Welcome to Basic Trading!\n"
 puts "This is an exciting game where you buy and sell only two items in two locations.\n"
 
+# Initialize Classes
 class Player
 	attr_accessor :money, :items
 	def initialize(money, items)
-		@money = money
-		@items = items
+		@money = money 				# Stored as integer
+		@items = items				# Stored as Array of hashes
 	end
 	def bio
 		puts "Player has $#{money} and #{items}.\n"
@@ -15,12 +18,18 @@ end
 
 class Goods
 	attr_accessor :title, :base_value
+	@@variety = []
 	def initialize(title, base_value)
 		@title = title
 		@base_value = base_value
+		@@variety << self
+	end
+	def self.variety
+		@@variety
 	end
 end
 
+# Initialize Custom Methods
 def instructions
 puts "Type (I)nventory, (B)uy, (S)ell, (T)ravel or (Q)uit.\n"
 end
@@ -38,10 +47,13 @@ def list_goods(item_a, item_b)
 	puts "Item B costs $#{item_b}.\n"
 end
 
-puts "Instantiating player...\n"
+# Instantiate Player
 player1 = Player.new(100, [])
 player1.bio
 
+# Instantiate Market Goods
+wheat = Goods.new("Wheat", 10)
+puts Goods.variety.inspect
 
 money = 100
 location = 0
@@ -50,6 +62,7 @@ item_a_count = 0
 item_b = 10
 item_b_count = 0
 
+# Start Game Loop
 puts "Hit Enter to Start.\n"
 while command = gets.chomp
 	puts "Start of loop.\n"
