@@ -2,6 +2,25 @@
 puts "Welcome to Basic Trading!\n"
 puts "This is an exciting game where you buy and sell only two items in two locations.\n"
 
+class Player
+	attr_accessor :money, :items
+	def initialize(money, items)
+		@money = money
+		@items = items
+	end
+	def bio
+		puts "Player has $#{money} and #{items}.\n"
+	end
+end
+
+class Goods
+	attr_accessor :title, :base_value
+	def initialize(title, base_value)
+		@title = title
+		@base_value = base_value
+	end
+end
+
 def instructions
 puts "Type (I)nventory, (B)uy, (S)ell, (T)ravel or (Q)uit.\n"
 end
@@ -18,6 +37,11 @@ def list_goods(item_a, item_b)
 	puts "Item A costs $#{item_a}.\n"
 	puts "Item B costs $#{item_b}.\n"
 end
+
+puts "Instantiating player...\n"
+player1 = Player.new(100, [])
+player1.bio
+
 
 money = 100
 location = 0
