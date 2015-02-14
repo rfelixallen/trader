@@ -8,7 +8,7 @@ puts "This is an exciting game where you buy and sell only two items in two loca
 class Player
 	attr_accessor :money, :items
 	def initialize(money, items)
-		@money = money 				# Stored as integer
+		@money = money 				# Stored as Integer
 		@items = items				# Stored as Array of hashes
 	end
 	def bio
@@ -22,10 +22,14 @@ class Goods
 	def initialize(title, base_value)
 		@title = title
 		@base_value = base_value
+		@current_value = base_value
 		@@variety << self
 	end
 	def self.variety
 		@@variety
+	end
+	def appraise(x)
+		current_value = base_value * x
 	end
 end
 
@@ -52,7 +56,11 @@ player1 = Player.new(100, [])
 player1.bio
 
 # Instantiate Market Goods
+market_stuff = []
 wheat = Goods.new("Wheat", 10)
+market_stuff << wheat
+ore = Goods.new("Ore", 20)
+market_stuff << ore
 puts Goods.variety.inspect
 
 money = 100
@@ -70,6 +78,8 @@ while command = gets.chomp
 		puts "You are in Location A.\n"
 		item_a = 10 * 5
 		item_b = 10 * 2
+		
+		#market_stuff.each do |x|
 	else
 		puts "You are in Location B.\n"
 		item_a = 10 * 2
@@ -165,7 +175,7 @@ while command = gets.chomp
 			location = 0
 		end
 		puts "You are traveling.\n"
-		Puts "Hit Enter to continue.\n"
+		puts "Hit Enter to continue.\n"
 	when "Q"
 		puts "Goodbye!\n"
 		break
