@@ -3,7 +3,7 @@
 # Header text confirms that the game has loaded.
 puts "Welcome to Basic Trading!\n"
 puts "This is an exciting game where you buy and sell only two items in two locations.\n"
-
+ 
 # Initialize Classes
 class Player
 	attr_accessor :money, :items
