@@ -17,6 +17,7 @@ class Player
 	def add_item(x)
 		self.items << x
 	end
+	#def make_start_goods(keys)
 end
 
 class Goods
@@ -55,9 +56,6 @@ def list_goods(item_a, item_b)
 	puts "Item B costs $#{item_b}.\n"
 end
 
-# Instantiate Player
-player1 = Player.new(100, [])
-player1.bio
 
 # Instantiate Market Goods
 market_stuff = []
@@ -67,6 +65,11 @@ ore = Goods.new("Ore", 20, 10)
 market_stuff << ore
 puts Goods.variety.inspect
 
+# Instantiate Player
+player1 = Player.new(100, {"item" => 0})
+player1.bio
+
+# Old method for money and storing items
 money = 100
 location = 0
 item_a = 10
@@ -76,8 +79,8 @@ item_b_count = 0
 
 # Test for putting items in users inventory.
 puts "Test for putting items in users inventory.\n"
-p_wheat = {wheat => 5}	
-player1.add_item(p_wheat)
+player1.items[wheat] = 5
+#player1.add_item(p_wheat)
 puts "Player1 bio:\n"
 player1.bio
 puts "Testing selling goods and updating money.\n"
@@ -85,6 +88,8 @@ puts "Adjust value of wheat:\n"
 wheat.current_value = wheat.base_value * 7
 puts "Wheat's current value: #{wheat.current_value}\n"
 units = p_wheat[wheat]# Hash value
+# Can we reference wheat's value from within player1.items?
+# units = player.items[0]
 puts "Units: #{units}\n"
 cost = units*wheat.current_value
 puts "Cost: #{cost}\n"
