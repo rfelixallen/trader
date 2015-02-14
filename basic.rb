@@ -20,19 +20,20 @@ class Player
 end
 
 class Goods
-	attr_accessor :title, :base_value
+	attr_accessor :title, :base_value, :current_value
 	@@variety = []
-	def initialize(title, base_value)
+	def initialize(title, base_value, current_value)
 		@title = title
 		@base_value = base_value
-		@current_value = base_value
+		@current_value = current_value
 		@@variety << self
 	end
 	def self.variety
 		@@variety
 	end
 	def appraise(x)
-		current_value = base_value * x
+		self.current_value = self.base_value * x
+		puts self.current_value
 	end
 end
 
@@ -60,9 +61,9 @@ player1.bio
 
 # Instantiate Market Goods
 market_stuff = []
-wheat = Goods.new("Wheat", 10)
+wheat = Goods.new("Wheat", 10, 10)
 market_stuff << wheat
-ore = Goods.new("Ore", 20)
+ore = Goods.new("Ore", 20, 10)
 market_stuff << ore
 puts Goods.variety.inspect
 
@@ -80,6 +81,13 @@ player1.add_item(p_wheat)
 puts "Player1 bio:\n"
 player1.bio
 puts "Testing selling goods and updating money.\n"
+puts "Adjust value of wheat:\n"
+wheat.current_value = wheat.base_value * 7
+puts "Wheat's current value: #{wheat.current_value}\n"
+units = p_wheat[wheat]# Hash value
+puts "Units: #{units}\n"
+cost = units*wheat.current_value
+puts "Cost: #{cost}\n"
 puts "Cancel here\n"
 gets.chomp
 # End test
