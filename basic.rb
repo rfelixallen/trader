@@ -14,6 +14,9 @@ class Player
 	def bio
 		puts "Player has $#{money} and #{items}.\n"
 	end
+	def add_item(x)
+		self.items << x
+	end
 end
 
 class Goods
@@ -69,6 +72,17 @@ item_a = 10
 item_a_count = 0
 item_b = 10
 item_b_count = 0
+
+# Test for putting items in users inventory.
+puts "Test for putting items in users inventory.\n"
+p_wheat = {wheat => 5}	
+player1.add_item(p_wheat)
+puts "Player1 bio:\n"
+player1.bio
+puts "Testing selling goods and updating money.\n"
+puts "Cancel here\n"
+gets.chomp
+# End test
 
 # Start Game Loop
 puts "Hit Enter to Start.\n"
