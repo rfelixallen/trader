@@ -88,6 +88,12 @@ units = p_wheat[wheat]# Hash value
 puts "Units: #{units}\n"
 cost = units*wheat.current_value
 puts "Cost: #{cost}\n"
+puts "Selling goods and gaining profit.\n"
+player1.money = player1.money + cost
+p_wheat[wheat] = p_wheat[wheat] - units
+puts "Player1 updated bio:\n"
+player1.bio
+
 puts "Cancel here\n"
 gets.chomp
 # End test
