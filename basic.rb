@@ -89,22 +89,22 @@ item_b_count = 0
 # Test for putting items in users inventory.
 puts "Test for putting items in users inventory.\n"
 player1.items[wheat] = 5
-#player1.add_item(p_wheat)
 puts "Player1 bio:\n"
 player1.bio
 puts "Testing selling goods and updating money.\n"
 puts "Adjust value of wheat:\n"
 wheat.current_value = wheat.base_value * 7
 puts "Wheat's current value: #{wheat.current_value}\n"
-# units = p_wheat[wheat]# Hash value
-# Can we reference wheat's value from within player1.items?
- units = player.items[wheat]
+units = player1.items[wheat]
 puts "Units: #{units}\n"
 cost = units*wheat.current_value
 puts "Cost: #{cost}\n"
 puts "Selling goods and gaining profit.\n"
 player1.money = player1.money + cost
-p_wheat[wheat] = p_wheat[wheat] - units
+puts "New Money:\n"
+puts "Money: #{player1.money}\n"
+puts "Current Wheat amount before subtraction: #{player1.items[wheat]}.\n"
+player1.items[wheat] = player1.items[wheat] - units
 puts "Player1 updated bio:\n"
 player1.bio
 
