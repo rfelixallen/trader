@@ -42,6 +42,31 @@ class Goods
 		self.current_value = self.base_value * x
 		puts self.current_value
 	end
+	def self.review
+		puts "Item: #{title}.\n"
+		puts "Base Value: #{base_value}.\n"
+		puts "Current Value: #{current_value}.\n"
+	end
+end
+
+class Location
+	attr_accessor :name
+	@@total_locations = []
+	def initialize(name)
+		@name = name
+		@@total_locations << self
+	end
+	def set_prices(total_locations, market)
+		# This is suppose to take in all locations, and the array of markrt items.
+		# For each location, adjust the current value of each item.
+		all_items = market
+		total_locations.each do |x|
+			all_items.each do |y|
+				r = 1 + rand(6)
+				self.current_value = self.base_value * r
+			end
+		end
+	end
 end
 
 # Initialize Custom Methods
@@ -64,7 +89,7 @@ end
 
 
 # Instantiate Market Goods
-market_stuff = []
+market_stuff = [] # Make full list of all items
 wheat = Goods.new("Wheat", 10, 10)
 market_stuff << wheat
 ore = Goods.new("Ore", 20, 10)
@@ -118,6 +143,8 @@ while command = gets.chomp
 	puts "Start of loop.\n"
 	if location == 0
 		puts "You are in Location A.\n"
+		# wheat.current_value = wheat.base_value * 7
+		# market_stuff 
 		item_a = 10 * 5
 		item_b = 10 * 2
 		
