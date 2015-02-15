@@ -51,14 +51,13 @@ end
 
 class Location
 	attr_accessor :name
-	@@total_locations = []
 	def initialize(name)
 		@name = name
-		@@total_locations << self
 	end
 	def set_prices(total_locations, market)
 		# This is suppose to take in all locations, and the array of markrt items.
 		# For each location, adjust the current value of each item.
+		# Can expand this to also set scarcity.
 		all_items = market
 		total_locations.each do |x|
 			all_items.each do |y|
@@ -95,6 +94,14 @@ market_stuff << wheat
 ore = Goods.new("Ore", 20, 10)
 market_stuff << ore
 puts Goods.variety.inspect
+
+# Instantiate Locations
+total_locations = []
+venice = Location.new("Venice")
+total_locations << venice
+baghdad = Location.new("Baghdad")
+total_locations << baghdad
+current_location = venice
 
 # Instantiate Player
 player1 = Player.new(100, {"Test" => 0})
@@ -141,19 +148,6 @@ gets.chomp
 puts "Hit Enter to Start.\n"
 while command = gets.chomp
 	puts "Start of loop.\n"
-	if location == 0
-		puts "You are in Location A.\n"
-		# wheat.current_value = wheat.base_value * 7
-		# market_stuff 
-		item_a = 10 * 5
-		item_b = 10 * 2
-		
-		#market_stuff.each do |x|
-	else
-		puts "You are in Location B.\n"
-		item_a = 10 * 2
-		item_b = 10 * 5
-	end
 	case command
 	when "I"
 		inventory(money, item_a_count, item_b_count)
