@@ -17,7 +17,13 @@ class Player
 	def add_item(x)
 		self.items << x
 	end
-	#def make_start_goods(keys)
+	def make_starting_goods(keys)
+	  	hash = {}
+	    keys.each do |key|
+	    hash[key] = 0
+	    end
+		self.items.merge!(hash)
+	end
 end
 
 class Goods
@@ -66,7 +72,10 @@ market_stuff << ore
 puts Goods.variety.inspect
 
 # Instantiate Player
-player1 = Player.new(100, {"item" => 0})
+player1 = Player.new(100, {"Test" => 0})
+player1.bio
+puts "Attempting to merge Market stuff with player inventory.\n"
+player1.make_starting_goods(market_stuff)
 player1.bio
 
 # Old method for money and storing items
@@ -87,9 +96,9 @@ puts "Testing selling goods and updating money.\n"
 puts "Adjust value of wheat:\n"
 wheat.current_value = wheat.base_value * 7
 puts "Wheat's current value: #{wheat.current_value}\n"
-units = p_wheat[wheat]# Hash value
+# units = p_wheat[wheat]# Hash value
 # Can we reference wheat's value from within player1.items?
-# units = player.items[0]
+ units = player.items[wheat]
 puts "Units: #{units}\n"
 cost = units*wheat.current_value
 puts "Cost: #{cost}\n"
