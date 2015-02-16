@@ -48,6 +48,10 @@ end
 def instructions
 puts "Type (I)nventory, (B)uy, (S)ell, (T)ravel or (Q)uit.\n"
 end
+def review_goods(good_hash)
+	puts "Name: #{good_hash["title"]}"
+	puts "Current Value: #{good_hash["current_value"]}"
+end
 
 # Instantiate Market Goods
 market_stuff = [] # Make full list of all items
@@ -55,13 +59,16 @@ wheat = Goods.new("Wheat", 10, 10)
 wheat_hash = {} 
 wheat.instance_variables.each{ |var| wheat_hash[var.to_s.delete("@")] = wheat.instance_variable_get(var) }
 puts "Wheat Hash: #{wheat_hash}"
+market_stuff << wheat_hash
+ore = Goods.new("Ore", 20, 40)
+ore_hash = {} 
+ore.instance_variables.each{ |var| ore_hash[var.to_s.delete("@")] = ore.instance_variable_get(var) }
+market_stuff << ore_hash
+review_goods(wheat_hash)
+review_goods(ore_hash)
+
 puts "Cancel Here.\n"
 gets.chomp
-market_stuff << wheat
-ore = Goods.new("Ore", 20, 40)
-market_stuff << ore
-puts Goods.variety.inspect
-
 # Instantiate Locations
 total_locations = []
 venice = Location.new("Venice")
