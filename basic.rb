@@ -30,6 +30,11 @@ class Goods
 		@base_value = base_value
 		@current_value = current_value
 	end
+	def self.to_hash_strings(market_item)
+		hash = {}
+		market_item.instance_variables.each_with_object({}) { |var,hash| hash[var.to_s.delete("@")] = market_item.instance_variable_get(var) }
+		puts hash
+	end
 end
 
 class Location
@@ -47,6 +52,11 @@ end
 # Instantiate Market Goods
 market_stuff = [] # Make full list of all items
 wheat = Goods.new("Wheat", 10, 10)
+wheat_hash = {}
+wheat.instance_variables.each{ |var| wheat_hash[var.to_s.delete("@")] = wheat.instance_variable_get(var) }
+puts "Wheat Hash: #{wheat_hash}"
+puts "Cancel Here.\n"
+gets.chomp
 market_stuff << wheat
 ore = Goods.new("Ore", 20, 40)
 market_stuff << ore
