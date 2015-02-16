@@ -71,36 +71,6 @@ def instructions
 puts "Type (I)nventory, (B)uy, (S)ell, (T)ravel or (Q)uit.\n"
 end
 
-def inventory(money, item_a_count, item_b_count)
-	puts "Your Inventory\n"
-	puts "Money: $#{player1.money}.\n"
-	puts "Inventory: #{player1.items}"
-	puts "Hit Enter to continue.\n"
-end
-
-=begin
-def review(player)
-	puts "Money: $#{player.money}.\n"
-	stuff = player.items
-	if stuff.empty? == true
-		puts "You have no items to sell."
-	else
-		stuff.each do |x|
-
-			puts "Item: #{player.items[x.title]}.\n"
-			puts "Current Value: #{current_value}.\n"
-			puts "Amount: #{player.items[x.value]}.\n"
-		end
-	end
-end
-=end
-
-def list_goods(item_a, item_b)
-	puts "Item A costs $#{item_a}.\n"
-	puts "Item B costs $#{item_b}.\n"
-end
-
-
 # Instantiate Market Goods
 market_stuff = [] # Make full list of all items
 wheat = Goods.new("Wheat", 10, 10)
@@ -158,7 +128,9 @@ while command = gets.chomp
 	puts "Start of loop.\n"
 	case command
 	when "I"
-		review(player1)
+		puts "Money: #{player1.money}.\n"		
+		puts "Items: #{player1.items}.\n"
+		puts "Hit Enter to Continue.\n"
 	when "B"
 		puts "You want to Buy.\n"
 		list_goods(item_a, item_b)
