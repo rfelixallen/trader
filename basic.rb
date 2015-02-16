@@ -52,16 +52,14 @@ class Location
 	def initialize(name)
 		@name = name
 	end
-	def set_prices(total_locations, market)
+	def self.set_prices(market)
 		# This is suppose to take in all locations, and the array of markrt items.
 		# For each location, adjust the current value of each item.
 		# Can expand this to also set scarcity.
 		all_items = market
-		total_locations.each do |x|
-			all_items.each do |y|
-				r = 1 + rand(6)
-				self.current_value = self.base_value * r
-			end
+		all_items.each do |y|
+			y.current_value = y.current_value * (1 + rand(6))
+			puts y.current_value
 		end
 	end
 end
@@ -75,7 +73,7 @@ end
 market_stuff = [] # Make full list of all items
 wheat = Goods.new("Wheat", 10, 10)
 market_stuff << wheat
-ore = Goods.new("Ore", 20, 10)
+ore = Goods.new("Ore", 20, 40)
 market_stuff << ore
 puts Goods.variety.inspect
 
@@ -88,7 +86,7 @@ total_locations << baghdad
 current_location = venice
 
 # Instantiate Player
-player1 = Player.new(100, {})
+player1 = Player.new(100, {wheat => 5, ore => 5})
 player1.bio
 puts "Attempting to merge Market stuff with player inventory.\n"
 player1.make_starting_goods(market_stuff)
@@ -123,6 +121,8 @@ gets.chomp
 =end 
 
 # Start Game Loop
+current_location = venice
+venice.set_prices(market_stuff)
 puts "Hit Enter to Start.\n"
 while command = gets.chomp
 	puts "Start of loop.\n"
