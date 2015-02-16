@@ -133,15 +133,29 @@ while command = gets.chomp
 	    	puts "Option: #{choice[x]}"
 		end
 		puts "Type the Option number of the item you want to buy:\n"
-		buy = gets.chomp.to_i
-		if choice.values.include?(buy) == true
-			b = choice.select {|k,v| v == buy}
-			puts "You want to buy #{b}"
-		else
-			puts "Placeholder"
+		while buy = gets.chomp.to_i
+			if choice.values.include?(buy) == true
+				b = choice.select {|k,v| v == buy}
+				puts "You want to buy #{b}.\n"
+				puts "How many units?\n"
+				units = gets.chomp.to_i
+				cost = units * b.current_value
+				if cost > player1.money
+					puts "You do not have enough money.\n"
+				elsif cost < 0
+					puts "Somehow the cost is less than 0.\n"
+				else
+					player1.money = player1.money - cost
+					player1.items[b] = player1.items[b] + units
+				end
+			else
+				puts "Type the option number.\n"
+				puts "To cancel, select an option and buy 0 units.\n"
+			end
 		end
-
-
+# Need to redo how items are held in inventory. Current method is not acceptable.
+# Instance Variables need to be stores as strings
+# Consider the following wheat.instance_variables.each_with_object({}) { |var,hash| hash[var.to_s.delete("@")] = wheat.instance_variable_get(var) }
 	
 		if buy == "A"
 			puts "How many units?\n"
