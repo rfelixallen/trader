@@ -52,7 +52,7 @@ end
 # Instantiate Market Goods
 market_stuff = [] # Make full list of all items
 wheat = Goods.new("Wheat", 10, 10)
-wheat_hash = {}
+wheat_hash = {} 
 wheat.instance_variables.each{ |var| wheat_hash[var.to_s.delete("@")] = wheat.instance_variable_get(var) }
 puts "Wheat Hash: #{wheat_hash}"
 puts "Cancel Here.\n"
