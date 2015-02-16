@@ -42,10 +42,8 @@ class Goods
 		self.current_value = self.base_value * x
 		puts self.current_value
 	end
-	def self.review
-		puts "Item: #{title}.\n"
-		puts "Base Value: #{base_value}.\n"
-		puts "Current Value: #{current_value}.\n"
+	def title
+		@title
 	end
 end
 
@@ -75,11 +73,27 @@ end
 
 def inventory(money, item_a_count, item_b_count)
 	puts "Your Inventory\n"
-	puts "Money: $#{money}.\n"
-	puts "Item A: #{item_a_count}\n"
-	puts "Item B: #{item_b_count}\n"
+	puts "Money: $#{player1.money}.\n"
+	puts "Inventory: #{player1.items}"
 	puts "Hit Enter to continue.\n"
 end
+
+=begin
+def review(player)
+	puts "Money: $#{player.money}.\n"
+	stuff = player.items
+	if stuff.empty? == true
+		puts "You have no items to sell."
+	else
+		stuff.each do |x|
+
+			puts "Item: #{player.items[x.title]}.\n"
+			puts "Current Value: #{current_value}.\n"
+			puts "Amount: #{player.items[x.value]}.\n"
+		end
+	end
+end
+=end
 
 def list_goods(item_a, item_b)
 	puts "Item A costs $#{item_a}.\n"
@@ -104,20 +118,13 @@ total_locations << baghdad
 current_location = venice
 
 # Instantiate Player
-player1 = Player.new(100, {"Test" => 0})
+player1 = Player.new(100, {})
 player1.bio
 puts "Attempting to merge Market stuff with player inventory.\n"
 player1.make_starting_goods(market_stuff)
 player1.bio
 
-# Old method for money and storing items
-money = 100
-location = 0
-item_a = 10
-item_a_count = 0
-item_b = 10
-item_b_count = 0
-
+=begin
 # Test for putting items in users inventory.
 puts "Test for putting items in users inventory.\n"
 player1.items[wheat] = 5
@@ -143,6 +150,7 @@ player1.bio
 puts "Cancel here\n"
 gets.chomp
 # End test
+=end 
 
 # Start Game Loop
 puts "Hit Enter to Start.\n"
@@ -150,7 +158,7 @@ while command = gets.chomp
 	puts "Start of loop.\n"
 	case command
 	when "I"
-		inventory(money, item_a_count, item_b_count)
+		review(player1)
 	when "B"
 		puts "You want to Buy.\n"
 		list_goods(item_a, item_b)
