@@ -129,21 +129,20 @@ while command = gets.chomp
 			puts "Item: #{x.title}\n"
 			puts "Price: #{x.current_value}\n"
 	    	choice[x] = i + 1
+	    	i = i + 1
 	    	puts "Option: #{choice[x]}"
 		end
-		puts "Type the exact name of the good you want to buy:\n"
-		buy = gets.chomp.downcase
-		if market_stuff.include?(buy)
-			puts "You want to purchase #{buy}.\n"
+		puts "Type the Option number of the item you want to buy:\n"
+		buy = gets.chomp.to_i
+		if choice.values.include?(buy) == true
+			b = choice.select {|k,v| v == buy}
+			puts "You want to buy #{b}"
 		else
-			puts "\n"
-		end	
+			puts "Placeholder"
+		end
 
 
-
-
-
-
+	
 		if buy == "A"
 			puts "How many units?\n"
 			units = Integer(gets) rescue nil
