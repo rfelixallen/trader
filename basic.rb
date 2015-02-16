@@ -14,9 +14,6 @@ class Player
 	def bio
 		puts "Player has $#{money} and #{items}.\n"
 	end
-	def add_item(x)
-		self.items << x
-	end
 	def make_starting_goods(keys)
 	  	hash = {}
 	    keys.each do |key|
@@ -28,22 +25,10 @@ end
 
 class Goods
 	attr_accessor :title, :base_value, :current_value
-	@@variety = []
 	def initialize(title, base_value, current_value)
 		@title = title
 		@base_value = base_value
 		@current_value = current_value
-		@@variety << self
-	end
-	def self.variety
-		@@variety
-	end
-	def appraise(x)
-		self.current_value = self.base_value * x
-		puts self.current_value
-	end
-	def title
-		@title
 	end
 end
 
