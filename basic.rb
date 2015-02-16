@@ -123,9 +123,27 @@ while command = gets.chomp
 		puts "Hit Enter to Continue.\n"
 	when "B"
 		puts "You want to Buy.\n"
-		list_goods(item_a, item_b)
-		puts "Type which good you want to buy: Item A (A) or Item B (B)\n"
-		buy = gets.chomp
+		choice = {}
+		i = 0
+		market_stuff.each do |x|
+			puts "Item: #{x.title}\n"
+			puts "Price: #{x.current_value}\n"
+	    	choice[x] = i + 1
+	    	puts "Option: #{choice[x]}"
+		end
+		puts "Type the exact name of the good you want to buy:\n"
+		buy = gets.chomp.downcase
+		if market_stuff.include?(buy)
+			puts "You want to purchase #{buy}.\n"
+		else
+			puts "\n"
+		end	
+
+
+
+
+
+
 		if buy == "A"
 			puts "How many units?\n"
 			units = Integer(gets) rescue nil
